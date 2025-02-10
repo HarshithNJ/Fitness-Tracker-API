@@ -21,5 +21,7 @@ public class activity {
     private int caloriesBurned;
 
     private LocalDate date;
+
+    
     
 }
