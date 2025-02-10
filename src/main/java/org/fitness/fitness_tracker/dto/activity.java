@@ -2,6 +2,8 @@ package org.fitness.fitness_tracker.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +22,8 @@ public class activity {
     private double duration;
     private int caloriesBurned;
 
-    private LocalDate date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String date;
 
     
     
