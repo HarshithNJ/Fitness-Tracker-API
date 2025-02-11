@@ -2,6 +2,7 @@ package org.fitness.fitness_tracker.service;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.fitness.fitness_tracker.dto.activity;
@@ -38,6 +39,30 @@ public class activityService {
             map.put("activity", activity);
 
             return new ResponseEntity<Object>(map, HttpStatus.CREATED);
+        }
+    }
+
+
+
+
+
+
+
+
+    public ResponseEntity<Object> getActivity() {
+        List<activity> act = repository.findAll();
+
+        if(act.isEmpty()){
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("error", "No Activity Found");
+
+            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+        }else{
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("success", "Activity Found");
+            map.put("activity", act);
+
+            return new ResponseEntity<Object>(map, HttpStatus.FOUND);
         }
     }
 }
