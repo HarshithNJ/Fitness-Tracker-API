@@ -22,7 +22,7 @@ public class activity {
     private double duration;
     private int caloriesBurned;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private String date;
 
     
