@@ -37,4 +37,9 @@ public class activityController {
     public ResponseEntity<Object> getActivityByName(@PathVariable String name){
         return service.getActivityByName(name);
     }
+
+    @GetMapping("/activities/date/{date}")
+    public ResponseEntity<Object> getActivityByDate(@PathVariable String date){
+        return service.getActivityByDate(date);
+    }
 }

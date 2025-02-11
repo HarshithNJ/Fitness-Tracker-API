@@ -14,5 +14,7 @@ public interface activityRepository extends JpaRepository<activity, Long> {
 
     List<activity> findByName(String name);
 
+    List<activity> findByDate(String date);
+
 
 }

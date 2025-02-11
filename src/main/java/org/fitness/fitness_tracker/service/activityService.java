@@ -85,4 +85,21 @@ public class activityService {
             return new ResponseEntity<Object>(map, HttpStatus.FOUND);
         }
     }
+
+    public ResponseEntity<Object> getActivityByDate(String date) {
+        List<activity> act = repository.findByDate(date);
+
+        if(act.isEmpty()){
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("error", "No Activity Found with Date: " + date);
+
+            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+        }else{
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("success", "Activity Found");
+            map.put("activity", act);
+
+            return new ResponseEntity<Object>(map, HttpStatus.FOUND);
+        }
+    }
 }
