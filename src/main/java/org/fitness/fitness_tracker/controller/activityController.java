@@ -4,6 +4,7 @@ import org.fitness.fitness_tracker.dto.activity;
 import org.fitness.fitness_tracker.service.activityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,16 @@ public class activityController {
     @GetMapping("/activities/date/{date}")
     public ResponseEntity<Object> getActivityByDate(@PathVariable String date){
         return service.getActivityByDate(date);
+    }
+
+
+
+
+
+
+    // To Delete a activity
+    @DeleteMapping("/activities/{id}")
+    public ResponseEntity<Object> deleteActivity(@PathVariable Long id){
+        return service.deleteActivity(id);
     }
 }

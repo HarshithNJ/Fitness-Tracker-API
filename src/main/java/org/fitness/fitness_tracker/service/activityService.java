@@ -1,9 +1,9 @@
 package org.fitness.fitness_tracker.service;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.fitness.fitness_tracker.dto.activity;
 import org.fitness.fitness_tracker.repository.activityRepository;
@@ -102,4 +102,35 @@ public class activityService {
             return new ResponseEntity<Object>(map, HttpStatus.FOUND);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+    public ResponseEntity<Object> deleteActivity(Long id) {
+        Optional<activity> act = repository.findById(id);
+
+        if(act.isPresent()){
+            repository.deleteById(id);
+
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("success", "Activity Deleted Successfully");
+            map.put("activity", act);
+
+            return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }else{
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("error", "Activity Not Found with ID: " + id);
+
+            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    
 }
