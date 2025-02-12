@@ -54,4 +54,8 @@ public class activityController {
     public ResponseEntity<Object> deleteActivity(@PathVariable Long id){
         return service.deleteActivity(id);
     }
+    @DeleteMapping("/activities")
+    public ResponseEntity<Object> deleteAllActivity(){
+        return service.deleteAllActivity();
+    }
 }

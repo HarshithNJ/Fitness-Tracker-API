@@ -132,5 +132,21 @@ public class activityService {
         }
     }
 
-    
+    public ResponseEntity<Object> deleteAllActivity() {
+        List<activity> act = repository.findAll();
+
+        if(act.isEmpty()){
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("error", "No Activities Found");
+
+            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+        }else{
+            repository.deleteAll();
+
+            Map<String, Object> map = new HashMap<String,Object>();
+            map.put("success", "All Activities Deleted Successfully");
+
+            return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }
+    }
 }
